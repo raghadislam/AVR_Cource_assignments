@@ -1,1 +1,3 @@
-main.o main.o: ../main.c
+main.o main.o: ../main.c ../../../STDTypes.h
+
+../../../STDTypes.h:
