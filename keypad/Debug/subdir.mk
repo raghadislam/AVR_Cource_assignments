@@ -6,16 +6,19 @@
 C_SRCS += \
 ../DIO_prog.c \
 ../Keypad_prog.c \
+../LCD_prog.c \
 ../main.c 
 
 OBJS += \
 ./DIO_prog.o \
 ./Keypad_prog.o \
+./LCD_prog.o \
 ./main.o 
 
 C_DEPS += \
 ./DIO_prog.d \
 ./Keypad_prog.d \
+./LCD_prog.d \
 ./main.d 
 
 

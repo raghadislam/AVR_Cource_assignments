@@ -23,6 +23,7 @@ int main ()
 	};
 
 
+	DIO_enuInit();
 
 if(LCD_enuInit() == ES_OK)
 {
