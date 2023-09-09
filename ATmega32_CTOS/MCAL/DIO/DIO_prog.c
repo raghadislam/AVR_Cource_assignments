@@ -6,9 +6,10 @@
  */
 
 #include "../../SERVICE/STDTypes.h"
+#include "../../SERVICE/errorState.h"
+
 #include "DIO_priv.h"
 #include "DIO_config.h"
-#include "../../SERVICE/errorState.h"
 
 
 ES_t DIO_enuInit(void){
@@ -30,131 +31,131 @@ ES_t DIO_enuInit(void){
 }
 
 
-//ES_t DIO_enuSetPortDir (u8 Copy_u8PortID , u8 Copy_u8Val ){
-//
-//	ES_t Local_enuErrorState = ES_NOK;
-//
-//	if(Copy_u8PortID <= DIO_PORTD)
-//	{
-//		switch(Copy_u8PortID)
-//		{
-//		case DIO_PORTA :
-//			DDRA = Copy_u8Val;
-//			break;
-//		case DIO_PORTB :
-//			DDRB = Copy_u8Val;
-//			break;
-//		case DIO_PORTC :
-//			DDRC = Copy_u8Val;
-//			break;
-//		case DIO_PORTD :
-//			DDRD = Copy_u8Val;
-//			break;
-//		}
-//		Local_enuErrorState = ES_OK;
-//
-//	}
-//	else Local_enuErrorState = ES_OUT_OF_RANGE;
-//
-//
-//	return Local_enuErrorState;
-//}
+ES_t DIO_enuSetPortDir (u8 Copy_u8PortID , u8 Copy_u8Val ){
+
+	ES_t Local_enuErrorState = ES_NOK;
+
+	if(Copy_u8PortID <= DIO_PORTD)
+	{
+		switch(Copy_u8PortID)
+		{
+		case DIO_PORTA :
+			DDRA = Copy_u8Val;
+			break;
+		case DIO_PORTB :
+			DDRB = Copy_u8Val;
+			break;
+		case DIO_PORTC :
+			DDRC = Copy_u8Val;
+			break;
+		case DIO_PORTD :
+			DDRD = Copy_u8Val;
+			break;
+		}
+		Local_enuErrorState = ES_OK;
+
+	}
+	else Local_enuErrorState = ES_OUT_OF_RANGE;
 
 
-//ES_t DIO_enuSetPortVal( u8 Copy_u8PortID , u8 Copy_u8Val ){
-//
-//	ES_t Local_enuErrorState = ES_NOK;
-//
-//	if(Copy_u8PortID <= DIO_PORTD)
-//	{
-//		switch(Copy_u8PortID)
-//		{
-//		case DIO_PORTA :
-//			PORTA = Copy_u8Val;
-//			break;
-//		case DIO_PORTB :
-//			PORTB = Copy_u8Val;
-//			break;
-//		case DIO_PORTC :
-//			PORTC = Copy_u8Val;
-//			break;
-//		case DIO_PORTD :
-//			PORTD = Copy_u8Val;
-//			break;
-//		}
-//
-//		Local_enuErrorState = ES_OK;
-//	}
-//	else Local_enuErrorState = ES_OUT_OF_RANGE;
-//
-//	return Local_enuErrorState;
-//}
+	return Local_enuErrorState;
+}
 
 
-//ES_t DIO_enuTogglePort( u8 Copy_u8PortID ){
-//
-//	ES_t Local_enuErrorState = ES_NOK;
-//
-//	if(Copy_u8PortID <= DIO_PORTD)
-//	{
-//		switch(Copy_u8PortID)
-//		{
-//		case DIO_PORTA :
-//			PORTA = ~PORTA;
-//			break;
-//		case DIO_PORTB :
-//			PORTB = ~PORTB;
-//			break;
-//		case DIO_PORTC :
-//			PORTC = ~PORTC;
-//			break;
-//		case DIO_PORTD :
-//			PORTD = ~PORTD;
-//			break;
-//		}
-//
-//		Local_enuErrorState = ES_OK;
-//	}
-//	else Local_enuErrorState = ES_OUT_OF_RANGE;
-//
-//
-//	return Local_enuErrorState;
-//}
+ES_t DIO_enuSetPortVal( u8 Copy_u8PortID , u8 Copy_u8Val ){
+
+	ES_t Local_enuErrorState = ES_NOK;
+
+	if(Copy_u8PortID <= DIO_PORTD)
+	{
+		switch(Copy_u8PortID)
+		{
+		case DIO_PORTA :
+			PORTA = Copy_u8Val;
+			break;
+		case DIO_PORTB :
+			PORTB = Copy_u8Val;
+			break;
+		case DIO_PORTC :
+			PORTC = Copy_u8Val;
+			break;
+		case DIO_PORTD :
+			PORTD = Copy_u8Val;
+			break;
+		}
+
+		Local_enuErrorState = ES_OK;
+	}
+	else Local_enuErrorState = ES_OUT_OF_RANGE;
+
+	return Local_enuErrorState;
+}
 
 
-//ES_t DIO_enuGetPortVal( u8 Copy_u8PortID , u8* Copy_pu8Val ){
-//
-//	ES_t Local_enuErrorState = ES_NOK;
-//
-//	if(Copy_pu8Val != NULL)
-//	{
-//		if(Copy_u8PortID <= DIO_PORTD)
-//		{
-//			switch(Copy_u8PortID)
-//			{
-//			case DIO_PORTA :
-//				*Copy_pu8Val = PINA;
-//				break;
-//			case DIO_PORTB :
-//				*Copy_pu8Val = PINB;
-//				break;
-//			case DIO_PORTC :
-//				*Copy_pu8Val = PINC;
-//				break;
-//			case DIO_PORTD :
-//				*Copy_pu8Val = PIND;
-//				break;
-//			}
-//
-//			Local_enuErrorState = ES_OK;
-//		}
-//		else Local_enuErrorState = ES_OUT_OF_RANGE;
-//	}
-//	else Local_enuErrorState = ES_NULL_POINTER;
-//
-//
-//	return Local_enuErrorState;
-//}
+ES_t DIO_enuTogglePort( u8 Copy_u8PortID ){
+
+	ES_t Local_enuErrorState = ES_NOK;
+
+	if(Copy_u8PortID <= DIO_PORTD)
+	{
+		switch(Copy_u8PortID)
+		{
+		case DIO_PORTA :
+			PORTA = ~PORTA;
+			break;
+		case DIO_PORTB :
+			PORTB = ~PORTB;
+			break;
+		case DIO_PORTC :
+			PORTC = ~PORTC;
+			break;
+		case DIO_PORTD :
+			PORTD = ~PORTD;
+			break;
+		}
+
+		Local_enuErrorState = ES_OK;
+	}
+	else Local_enuErrorState = ES_OUT_OF_RANGE;
+
+
+	return Local_enuErrorState;
+}
+
+
+ES_t DIO_enuGetPortVal( u8 Copy_u8PortID , u8* Copy_pu8Val ){
+
+	ES_t Local_enuErrorState = ES_NOK;
+
+	if(Copy_pu8Val != NULL)
+	{
+		if(Copy_u8PortID <= DIO_PORTD)
+		{
+			switch(Copy_u8PortID)
+			{
+			case DIO_PORTA :
+				*Copy_pu8Val = PINA;
+				break;
+			case DIO_PORTB :
+				*Copy_pu8Val = PINB;
+				break;
+			case DIO_PORTC :
+				*Copy_pu8Val = PINC;
+				break;
+			case DIO_PORTD :
+				*Copy_pu8Val = PIND;
+				break;
+			}
+
+			Local_enuErrorState = ES_OK;
+		}
+		else Local_enuErrorState = ES_OUT_OF_RANGE;
+	}
+	else Local_enuErrorState = ES_NULL_POINTER;
+
+
+	return Local_enuErrorState;
+}
 
 
 
@@ -229,36 +230,36 @@ ES_t DIO_enuSetPinVal( u8 Copy_u8PortID , u8 Copy_u8PinID , u8 Copy_u8Val ){
 	return Local_enuErrorState;
 }
 
-//ES_t DIO_enuTogglePin( u8 Copy_u8PortID , u8 Copy_u8PinID  ){
-//
-//	ES_t Local_enuErrorState = ES_NOK;
-//
-//	if( Copy_u8PortID <= DIO_PORTD && Copy_u8PinID <= DIO_PIN7 )
-//	{
-//
-//		switch(Copy_u8PortID)
-//		{
-//		case DIO_PORTA :
-//			PORTA ^= (DIO_MASK_BIT << Copy_u8PinID);
-//			break;
-//		case DIO_PORTB :
-//			PORTB ^= (DIO_MASK_BIT << Copy_u8PinID);
-//			break;
-//		case DIO_PORTC :
-//			PORTC ^= (DIO_MASK_BIT << Copy_u8PinID);
-//			break;
-//		case DIO_PORTD :
-//			PORTD ^= (DIO_MASK_BIT << Copy_u8PinID);
-//			break;
-//		}
-//
-//		Local_enuErrorState = ES_OK;
-//
-//	}
-//	else Local_enuErrorState = ES_OUT_OF_RANGE;
-//
-//	return Local_enuErrorState;
-//}
+ES_t DIO_enuTogglePin( u8 Copy_u8PortID , u8 Copy_u8PinID  ){
+
+	ES_t Local_enuErrorState = ES_NOK;
+
+	if( Copy_u8PortID <= DIO_PORTD && Copy_u8PinID <= DIO_PIN7 )
+	{
+
+		switch(Copy_u8PortID)
+		{
+		case DIO_PORTA :
+			PORTA ^= (DIO_MASK_BIT << Copy_u8PinID);
+			break;
+		case DIO_PORTB :
+			PORTB ^= (DIO_MASK_BIT << Copy_u8PinID);
+			break;
+		case DIO_PORTC :
+			PORTC ^= (DIO_MASK_BIT << Copy_u8PinID);
+			break;
+		case DIO_PORTD :
+			PORTD ^= (DIO_MASK_BIT << Copy_u8PinID);
+			break;
+		}
+
+		Local_enuErrorState = ES_OK;
+
+	}
+	else Local_enuErrorState = ES_OUT_OF_RANGE;
+
+	return Local_enuErrorState;
+}
 
 ES_t DIO_enuGetPinVal( u8 Copy_u8PortID , u8 Copy_u8PinID , u8* Copy_pu8Val ){
 

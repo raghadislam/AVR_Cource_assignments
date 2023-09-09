@@ -2,7 +2,7 @@
  * LCD_prog.c
  *
  *  Created on: Jul 22, 2023
- *      Author: DeLL
+ *      Author: Raghad Islam
  */
 
 #include "../../SERVICE/STDTypes.h"
@@ -80,7 +80,7 @@ ES_t LCD_enuInit(void)
 	Local_u64Check |= (((u64)LCD_inenuSendCommand(0x80)<<27 )); //2 lines, 5*7 ,4 bit mode
 	_delay_ms(1);
 	Local_u64Check |= (((u64)LCD_inenuSendCommand(0x00)<<30 ));
-	Local_u64Check |= (((u64)LCD_inenuSendCommand(0xF0)<<33 )); //Display ON, Cursor ON ,Blink ON
+	Local_u64Check |= (((u64)LCD_inenuSendCommand(0xC0)<<33 )); //Display ON, Cursor ON ,Blink ON -> F0
 	_delay_ms(1);
 	Local_u64Check |= (((u64)LCD_inenuSendCommand(0x00)<<36 ));
 	Local_u64Check |= (((u64)LCD_inenuSendCommand(0x10)<<39 )); //Display Clear
@@ -115,7 +115,7 @@ ES_t LCD_enuSendChar(u8 Copy_u8Data)
 {
 	ES_t Local_enuErrorState = ES_NOK;
 
-	// select instruction register
+	/* select instruction register */
 
 	if( DIO_enuSetPinVal( RS_PORT, RS_PIN, DIO_u8HIGH ) == ES_OK)
 	{
@@ -130,7 +130,7 @@ ES_t LCD_enuSendCommand(u8 Copy_u8Command)
 {
 	ES_t Local_enuErrorState = ES_NOK;
 
-	// select instruction register
+	/* select instruction register*/
 	if( DIO_enuSetPinVal(RS_PORT, RS_PIN, DIO_u8LOW ) == ES_OK )
 	{
 		Local_enuErrorState = LCD_inenuLatch(Copy_u8Command);
@@ -225,35 +225,60 @@ ES_t LCD_enuGoto(u8 Copy_u8Line,u8 Copy_u8Block)
 }
 
 
-ES_t LCD_enuWriteNumber(s64 Copy_u8num)
+ES_t LCD_enuWriteNumber(u8 Copy_u8Num)
 {
 	ES_t Local_enuErrorState = ES_NOK;
 	Local_enuErrorState = DIO_enuSetPinVal(RS_PORT, RS_PIN, DIO_u8HIGH );
 
-	u8 Local_Au8Digits[16]={0};
-	s8 Local_u8Iterator = 0;
-
-	if(Copy_u8num < 0 && Local_enuErrorState == ES_OK)
+	if(Copy_u8Num == 0.0)
 	{
-		Local_enuErrorState = LCD_inenuLatch('-');
-		Copy_u8num *= -1;
+		Local_enuErrorState = LCD_inenuLatch('0');
+		return Local_enuErrorState;
 	}
 
-
-	while (Copy_u8num > 0 && Local_enuErrorState == ES_OK)
+	static u8 Local_Au8Digits[16] = {'0'};
+	s8 Local_u8Iterator = -1;
+	s32 Local_s32Number = Copy_u8Num;
+	if(Copy_u8Num < 0 )
 	{
-		Local_Au8Digits[Local_u8Iterator] = Copy_u8num % 10;
+		LCD_enuSendChar('-');
+		Local_s32Number *= -1;
+	}
+
+	if((Copy_u8Num < 1.0 && Copy_u8Num > 0.0) || (Copy_u8Num > -1.0 && Copy_u8Num < 0.0)) LCD_enuSendChar('0');
+
+	while (Local_s32Number > 0 && Local_enuErrorState == ES_OK)
+	{
 		Local_u8Iterator++;
-		Copy_u8num/=10;
+		Local_Au8Digits[Local_u8Iterator] = Local_s32Number % 10;
+		Local_s32Number /= 10;
 	}
 
-	Local_u8Iterator--;
-
-
-	while( Local_u8Iterator >= 0 && Local_enuErrorState == ES_OK) //786
+	while( Local_u8Iterator >= 0 && Local_enuErrorState == ES_OK)
 	{
-		Local_enuErrorState = LCD_inenuLatch( Local_Au8Digits[Local_u8Iterator]+'0');
+		Local_enuErrorState = LCD_inenuLatch( Local_Au8Digits[Local_u8Iterator] + '0');
 		Local_u8Iterator--;
+	}
+
+	Copy_u8Num = (Copy_u8Num - (s32)Copy_u8Num);
+	if(Copy_u8Num != 0.0)
+	{
+		LCD_inenuLatch('.');
+		if(Copy_u8Num < 0) Copy_u8Num *= -1;
+		u16 base = 10;
+		while (base <= 10000)
+		{
+			Local_u8Iterator++;
+			Local_Au8Digits[3 - Local_u8Iterator] = ((s32)(Copy_u8Num*base))%10;
+			base *= 10;
+		}
+
+		while( Local_u8Iterator >= 0 && Local_enuErrorState == ES_OK)
+		{
+			Local_enuErrorState = LCD_inenuLatch( Local_Au8Digits[Local_u8Iterator] + '0');
+			Local_u8Iterator--;
+		}
+
 	}
 
 	return Local_enuErrorState;
