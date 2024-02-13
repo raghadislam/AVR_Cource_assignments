@@ -150,7 +150,7 @@
 #define TIMER2			4
 #define ICU_INT			5
 
-#define TIMER0_MAX		256
+#define TIMER0_MAX		256ULL
 #define TIMER1_MAX		65536ULL
 #define TIMER2_MAX		256
 

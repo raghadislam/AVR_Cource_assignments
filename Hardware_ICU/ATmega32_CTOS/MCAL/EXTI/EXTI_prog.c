@@ -29,7 +29,7 @@ ES_t EXTI_enuInit(EXTI_t * Copy_pstrEXTIConfig)
 
 	if(Copy_pstrEXTIConfig == NULL) return ES_NULL_POINTER;
 
-	if(Copy_pstrEXTIConfig[0].EXTI_u8State == TIMER_ENABLED)
+	if(Copy_pstrEXTIConfig[0].EXTI_u8State == ENABLED)
 	{
 		/*set sense control for INT0*/
 
@@ -47,7 +47,7 @@ ES_t EXTI_enuInit(EXTI_t * Copy_pstrEXTIConfig)
 		Set_bit(GICR,GICR_INT0);
 	}
 
-	if(Copy_pstrEXTIConfig[1].EXTI_u8State == TIMER_ENABLED)
+	if(Copy_pstrEXTIConfig[1].EXTI_u8State == ENABLED)
 	{
 		/*set sense control for INT1*/
 
@@ -65,7 +65,7 @@ ES_t EXTI_enuInit(EXTI_t * Copy_pstrEXTIConfig)
 		Set_bit(GICR,GICR_INT1);
 	}
 
-	if(Copy_pstrEXTIConfig[2].EXTI_u8State == TIMER_ENABLED)
+	if(Copy_pstrEXTIConfig[2].EXTI_u8State == ENABLED)
 	{
 		/*set sense control for INT2*/
 

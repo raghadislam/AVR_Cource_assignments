@@ -18,7 +18,7 @@
 #define ON_CHANGE		 56
 #define LOW_LEVEL 		 86
 
-#define TIMER_ENABLED			 9
+#define ENABLED	 9
 #define DISABLED		 7
 
 
