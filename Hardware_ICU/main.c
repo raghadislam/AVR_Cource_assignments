@@ -8,15 +8,15 @@
 
  /* -------- includes -------- */
 #include <util/delay.h>
-#include "ATmega32_CTOS/SERVICE/STDTypes.h"
-#include "ATmega32_CTOS/SERVICE/errorState.h"
+#include "../ATmega32_CTOS/SERVICE/STDTypes.h"
+#include "../ATmega32_CTOS/SERVICE/errorState.h"
 
-#include "ATmega32_CTOS/MCAL/DIO/DIO_int.h"
-#include "ATmega32_CTOS/MCAL/GIE/GIE_int.h"
+#include "../ATmega32_CTOS/MCAL/DIO/DIO_int.h"
+#include "../ATmega32_CTOS/MCAL/GIE/GIE_int.h"
 
-#include "ATmega32_CTOS/MCAL/TIMER/timer_int.h"
+#include "../ATmega32_CTOS/MCAL/TIMER/timer_int.h"
 
-#include "ATmega32_CTOS/HAL/LCD/LCD_int.h"
+#include "../ATmega32_CTOS/HAL/LCD/LCD_int.h"
 
 
 int main()

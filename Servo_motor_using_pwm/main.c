@@ -7,14 +7,14 @@
  ********************************/
  
  /* -------- includes -------- */
-#include "ATmega32_CTOS/SERVICE/STDTypes.h"
-#include "ATmega32_CTOS/SERVICE/errorState.h"
+#include "../ATmega32_CTOS/SERVICE/STDTypes.h"
+#include "../ATmega32_CTOS/SERVICE/errorState.h"
 #include <util/delay.h>
 
-#include "ATmega32_CTOS/MCAL/DIO/DIO_int.h"
-#include "ATmega32_CTOS/MCAL/TIMER/timer_int.h"
+#include "../ATmega32_CTOS/MCAL/DIO/DIO_int.h"
+#include "../ATmega32_CTOS/MCAL/TIMER/timer_int.h"
 
-#include "ATmega32_CTOS/HAL/Servo/SERVO_int.h"
+#include "../ATmega32_CTOS/HAL/Servo/SERVO_int.h"
 
 
 int main()
