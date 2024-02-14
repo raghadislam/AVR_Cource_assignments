@@ -1,0 +1,5 @@
+C:/Users/DeLL/Desktop/Embedded/Cmake_avr/build/CMakeFiles/AVR_FIRST.elf.dir
+C:/Users/DeLL/Desktop/Embedded/Cmake_avr/build/CMakeFiles/flash.dir
+C:/Users/DeLL/Desktop/Embedded/Cmake_avr/build/CMakeFiles/burn.dir
+C:/Users/DeLL/Desktop/Embedded/Cmake_avr/build/CMakeFiles/edit_cache.dir
+C:/Users/DeLL/Desktop/Embedded/Cmake_avr/build/CMakeFiles/rebuild_cache.dir

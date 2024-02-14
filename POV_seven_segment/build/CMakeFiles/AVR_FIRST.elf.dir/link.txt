@@ -1,0 +1,1 @@
+C:\WinAVR-20100110\bin\avr-gcc.exe -mmcu=atmega32 -O1	-DF_CPU=8000000ULL CMakeFiles/AVR_FIRST.elf.dir/DIO_prog.c.obj CMakeFiles/AVR_FIRST.elf.dir/Seven_segment_config.c.obj CMakeFiles/AVR_FIRST.elf.dir/Seven_segment_prog.c.obj CMakeFiles/AVR_FIRST.elf.dir/main.c.obj CMakeFiles/AVR_FIRST.elf.dir/timer_prog.c.obj -o AVR_FIRST.elf 
