@@ -1,1 +1,1 @@
-# avr interfacing assignments
+# AVR interfacing assignments
